@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet"/>
+
+    <meta HTTP-EQUIV="CONTENT-LANGUAGE" CONTENT="en-US">
+    <meta charset="utf-8">   
+    <meta name="description" content="CRISPR design portal">
+    <title>Optimized CRISPR Design</title>
+    
+    <link href='http://fonts.googleapis.com/css?family=Alegreya+SC' rel='stylesheet' type='text/css'>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-47094595-1', 'mit.edu');
+      ga('create', 'UA-53574502-2', 'auto', {'name': 'newTracker'});
+      
+      ga('send', 'pageview');
+      ga('newTracker.send', 'pageview');
+
+    </script>
+
+
+    
+    <script type="text/javascript">
+      console.log("INITING")
+      init_state={"job": {"submitted_ms": 1494352404000, "sequence": "CAAGGCGGAAGCAGCGCCGGCGCGGAACCCGCTCTGCCGCAGCGATGGCTGCCGGTGTACCCT", "estimated_waiting_time": 120000, "computed_n_hits": 778, "id": 1175393, "files_ready": false, "email_complete": false, "start": 63450461, "chr": "chr9", "genome": 2, "email": "gregw.clark@mail.utoronto.ca", "files": [{"url": "/files/pjobs/1175393/f5.pdf", "ready": false, "name": "summary.pdf", "filename": "Greg_mouse-summary.pdf"}, {"url": "/files/pjobs/1175393/f6.csv", "ready": false, "name": "offtargets.csv", "filename": "Greg_mouse-offtargets.csv"}], "spacers": [{"score": 0.944300331975206, "sequence": "CGGCAGAGCGGGTTCCGCGCCGG", "n_offtargets": 38, "nrg": "CGG", "computing_hits": false, "jobid": 1175393, "start": 16, "computed_hits": true, "n_genic_offtargets": 17, "id": 24187948, "position": 16, "guide": "CGGCAGAGCGGGTTCCGCGC", "strand": -1, "name": null}, {"score": 0.716802880672887, "sequence": "AGCCATCGCTGCGGCAGAGCGGG", "n_offtargets": 153, "nrg": "GGG", "computing_hits": false, "jobid": 1175393, "start": 27, "computed_hits": true, "n_genic_offtargets": 43, "id": 24187947, "position": 27, "guide": "AGCCATCGCTGCGGCAGAGC", "strand": -1, "name": null}, {"score": 0.814541582111047, "sequence": "CAGCCATCGCTGCGGCAGAGCGG", "n_offtargets": 166, "nrg": "CGG", "computing_hits": false, "jobid": 1175393, "start": 28, "computed_hits": true, "n_genic_offtargets": 43, "id": 24187946, "position": 28, "guide": "CAGCCATCGCTGCGGCAGAG", "strand": -1, "name": null}, {"score": 0.808744156245945, "sequence": "TACACCGGCAGCCATCGCTGCGG", "n_offtargets": 92, "nrg": "CGG", "computing_hits": false, "jobid": 1175393, "start": 36, "computed_hits": true, "n_genic_offtargets": 17, "id": 24187945, "position": 36, "guide": "TACACCGGCAGCCATCGCTG", "strand": -1, "name": null}, {"score": 0.863431637217025, "sequence": "AGGCGGAAGCAGCGCCGGCGCGG", "n_offtargets": 97, "nrg": "CGG", "computing_hits": false, "jobid": 1175393, "start": 2, "computed_hits": true, "n_genic_offtargets": 52, "id": 24187942, "position": 2, "guide": "AGGCGGAAGCAGCGCCGGCG", "strand": 1, "name": null}, {"score": 0.92299506412499, "sequence": "AACCCGCTCTGCCGCAGCGATGG", "n_offtargets": 61, "nrg": "TGG", "computing_hits": false, "jobid": 1175393, "start": 25, "computed_hits": true, "n_genic_offtargets": 17, "id": 24187943, "position": 25, "guide": "AACCCGCTCTGCCGCAGCGA", "strand": 1, "name": null}, {"score": 0.734191014730041, "sequence": "TCTGCCGCAGCGATGGCTGCCGG", "n_offtargets": 164, "nrg": "CGG", "computing_hits": false, "jobid": 1175393, "start": 32, "computed_hits": true, "n_genic_offtargets": 49, "id": 24187944, "position": 32, "guide": "TCTGCCGCAGCGATGGCTGC", "strand": 1, "name": null}], "query_type": "other_region", "computed_hits": true, "key": "2606724452743619", "genome_name": "mm9", "strand": 1, "n_completed_spacers": 7, "name": "Greg_mouse", "computed_spacers": true, "n_spacers": 7, "completed_ms": 1494352502000, "mapped": true}}
+      sessionInfo = {"routes": {"jobs_from_fasta": "/j/from_fasta", "job_check_spacers": "/j/check_spacers/{job_key}", "maintainance": "/sorry", "csv_all_guides": "/export/csv_all_guides/{job_key}", "spacer_check_hits": "/s/check_hits/{spacer_id}", "submit": "/", "batch_rest": "/r/batch/{batch_key}", "job_post_new": "/j/post_new", "gb_all_nicks": "/export/nicks_gb/{job_key}", "job_from_spacers": "/j/from_spacers", "readonly": "/readonly", "spacer_retrieve_regions": "/s/retrieve_regions/{spacer_id}", "spacer_rest": "/r/spacer/{spacer_id}", "gb_one_nick": "/export/nicks_gb/{job_key}/{spacerfwdid}/{spacerrevid}", "__/files/": "/files/*subpath", "job_retrieve_spacers": "/j/retrieve_spacers/{job_key}", "downloads": "/downloads/{job_key}", "__/img/": "/img/*subpath", "job_rest": "/r/job/{job_key}", "readout": "/guides/{job_key}", "gb_all_guides": "/export/guides_gb/{job_key}", "job": "/job/{job_key}", "spacer_retrieve_hits": "/s/retrieve_hits/{spacer_id}", "csv_one_spacer": "/export/spacer_csv/{job_key}/{spacerid}", "job_email_complete": "/j/email_complete/{job_key}", "about": "/about", "__/js/": "/js/*subpath", "batch": "/batch/{batch_key}", "__/css/": "/css/*subpath", "__/pages/": "/pages/*subpath", "nickase": "/nick/{job_key}"}}
+    </script>
+
+    <script type="text/javascript" src="/js/cdn/jquery.min.js" ></script>
+    <script type="text/javascript" src="/js/cdn/underscore-min.js" ></script>
+    <script type="text/javascript" src="/js/cdn/backbone-min.js" ></script>
+    <script type="text/javascript" src="/js/cdn/mustache.min.js" ></script>
+    <script type="text/javascript" src="/js/deps/backbone.eventbinder.js" ></script>
+    <script type="text/javascript" src="/js/deps/backbone-relational/backbone-relational.js" ></script>
+    <script type="text/javascript" src="/js/deps/jquery-tablesorter/jquery.tablesorter.min.js" ></script>
+
+    <script src="/js/deps/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/deps/jquery-svg/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="/js/deps/sprintf.js/src/sprintf.min.js"></script>
+
+    <script type="unknown" id="spacer_offtargets_v_template">
+  <h2 id="no_id_offtargets_view_header">Spacer job #{{ job_id }}</h2>
+  <div class="sequence">{{sequence}}</div>
+  <ul class="offtargets_view">
+  </ul>
+
+  <div class="download as PDF"><a>download as PDF</a></div>
+</script>
+
+<script type="unknown" id="offtarget_v_template">
+  <h4 id="no_id_view_header">
+  </h4>
+  <div class="info">{{ chr }} : {{ strand===1?"+":"-" }} {{ start }}</div>
+  <div class="sequence">
+    {{ sequence }}
+  </div>
+</script>
+
+    
+    <script type="unknown" id="spacer-v-template">
+</script>
+<script type="unknown" id="spacer-h-v-template">
+  <span class="info">
+    <h4 class="inline">guide #{{rank}} {{name != null ? "("+name+")" : ""}}</h4>    
+    <dl class="header">
+      <dt class="med-left-margin">quality score: </dt>
+      <dd><span class="qscore">{{sprintf("%d",score*100) }}</span></dd><br/>
+    </dl><br/>
+    <dl>
+      <dt>guide sequence: </dt>
+      <dd><span class="guide dna">{{guide}}</span><span class="small-left-margin nrg dna">{{nrg}}</span></dd>
+    </dl><br/>
+    <dl>
+      <dt>on-target locus:</dt>
+      <dd><span class="locus description">{{locus}}</span></dd>
+    </dl><br/>
+    <dl>
+      <dt>number of offtarget sites: </dt>
+      <dd class="offtargets"><span class="n-hits">{{n_offtargets}}</span> (<span class="n-genic">{{n_genic_offtargets}}</span> are in genes)</dd>
+    </dl>
+  </span>
+  <br/><br/>
+  <span class="table-type-selection center v-middle"><span class="annotation v-middle">top 20 genome-wide off-target sites</span><span class="hspace-80 dotted"></span><input class="v-middle inline " id="exonic-only" type="checkbox"><label class="v-middle inline" for="exonic-only">show all exonic</label>
+  </span>
+  <div class="hits top">
+    <table class="top top-hits">
+      <thead>
+	<tr>
+	  <th>sequence</th>
+	  <th>score</th>
+	  <th>mismatches</th>
+	  <th>UCSC gene</th>
+	  <th>locus</th>
+	</tr>
+      </thead>
+      <tbody> 
+      </tbody>
+    </table>
+    <table class="gene gene-hits">
+      <thead>
+	<tr>
+	  <th>sequence</th>
+	  <th>score</th>
+	  <th>mismatches</th>
+	  <th>UCSC gene</th>
+	  <th>locus</th>
+	</tr>
+      </thead>
+      <tbody> 
+      </tbody>
+    </table>
+  </div>
+</script>
+
+<script type="unknown" id="hit-v-template">
+  <td class="sequence">{{sequence}}</td>
+  <td class="score"> {{sprintf("%.1f",score)}}</td>
+  <td class="mismatches">{{mm_string}}</td>
+  <td class="gene">{{gene}}</td>
+  <td class="locus">{{locus}}</td>
+</script>
+
+
+<!-- A view for a single spacer element in Left Column-list view -->
+<script type="unknown" id="spacer-list-v-template">
+
+  <td>{{ name == null? "Guide #<span class=rank>"+rank+"</span>" : name}}</td>
+  <td class="center"><span class="qscore">{{sprintf("%d",score*100)}}</span></td>
+  <td><span class="guide dna">{{guide}}</span><span class="nrg dna small-left-margin">{{nrg}}</span></td>
+
+  <span class="hover">
+    <span class="position-container">position: 
+      <span class="strand">{{strand == 1? "+" : "-"}}</span>
+      <span class="position">{{position}}</span><br/>
+    </span>
+    <span class="guide dna">{{guide}}</span><span class="nrg dna small-left-margin">{{nrg}}</span>
+    <span class="score-container">quality score: <span class="score"><b>{{score}}</b></span></span>
+  </span>
+</script>
+
+
+
+    <script type="unknown" id="job-page-view-template">
+
+
+  <div class="status-view-container"></div>
+  
+  <ul class="nav nav-tabs crispr-tabs"><h4 class="tabs-label">Results</h4>
+
+    <li class="active"><a href="#results-tab" data-toggle="tab">Results</a></li>
+    <li><a href="#info-tab" data-toggle="tab">Job Info</a></li>
+    <li><a href="#downloads-tab" data-toggle="tab">Downloads</a></li>
+  </ul>
+  <div class="tab-content content-area">
+    <div id="results-tab" name="Results" class="tab-pane active"> 
+      <div class="pages-view-container"></div>
+    </div>
+    <div id="info-tab" name="Job Info" class="tab-pane">
+      <div class="full-width tab-header-annotation">View job info for "{{name}}".</div>
+      <div class="info-view">
+	<dl>
+	  <dt>Submitted by:</dt><dd>{{email}}</dd><br/>
+	  <dt>Date submitted:</dt><dd>{{date_submitted}}</dd><br/>
+	  <dt>Aligns to:</dt><dd>{{genome_name}} on the <b>{{strand=="1"?"sense":"antisense"}}</b> strand of <b>{{chr}}</b> at <b>{{start}}</b> ({{locus}})</dd><br/>
+	  <dt>Sequence:</dt><dd class="seq"><span class="break-all dna">{{sequence}}</span></dd><br/>
+	  <dt>Statistics:</dt><dd>{{sequence.length}}nt, contains {{spacers.length}} possible guide sequences</dd><br/>
+	</dl>
+      </div>
+    </div>
+    <div id="downloads-tab" name="Downloads" class="tab-pane">
+      <div class="full-width tab-header-annotation">Download offline results for "{{name}}".</div>
+      <br/><i>2014-01-11 This page is not yet complete, stay tuned!</i>
+      <br/><br/>
+      <dl>
+	<dt>Scored guides GENBANK file:</dt><dd><a target=_blank href={{export_gb_guides_url}}>all_guides.gb</a></dd>
+	<dt>All offtargets by guide, CSV:</dt><dd><a href={{export_all_csv_offtargets_url}}>all_offtargets.csv</a></dd><dd>(Guide IDs reference those from "all_guides" GENBANK file above)</dd> 
+	<dt>Nickase pair selection GENBANK file:</dt><dd> <a target=_blank href={{export_gb_nicks_url}}>all_nickases.gb</a></dd>
+    </div>
+  </div>
+</script>
+<script type="unknown" id="job-page-status-view-template">
+  <h3>CRISPR Job Submission "{{name}}"</h3>
+  <div class="header-oneline">
+    <h4>Status: </h4>
+    <div class="status-text">about ?? minutes left<span class="right"><control class="email"><input id="email-complete" class="inline v-middle" {{email_complete?"checked":""}} type="checkbox"></input><label class="unselectable inline v-middle med-left-margin" for="email-complete">Email when done</label></control></span></div>
+  </div>
+
+
+  
+  <!-- status display area -->
+  <div class="status">
+    <div class="progress progress-striped active">
+      <div class="progress-bar bar" style="width: 0%;"></div>
+    </div>
+  </div> 
+  <div class="wait-for-nickase">Note: Nickase Analysis and Downloads will be ready when all guides are completely analyzed. <a href={{readout_page_url}}>Guides and offtargets</a> info may be loaded dynamically!</div>
+
+</script>
+<script type="unknown" id="job-page-pages-view-template">
+  
+
+      <div class="">
+	<div class="full-width  tab-header-annotation">View online results for {{name}}.<span class="right"><!--... or view <span class="download-container"><a href="{{downloads_page_url}}">downloadable results</a>.</span>--></div>
+      </div>
+      <div class="cards">
+	<div class="card guides">
+	  <div class="background"></div>
+	  <a class="covering-link" href="{{readout_page_url}}"></a>
+	  <div class="header"><h4>Guides & offtargets</h4></div>
+	  <div class="footer"><span class="download-container"><a href="{{export_gb_guides_url}}" target="_blank">Download as genbank</a></span></div>
+	</div>
+	<div class="card nickase">
+	  <div class="background"></div>
+	  <a class="covering-link" href="{{nickase_page_url}}"></a>
+	  <div class="header"><h4>Nickase analysis</h4></div>
+	  <div class="footer"><span class="download-container"><a class="download" href="{{export_gb_nicks_url}}" target="_blank">Download as genbank</a></span></div>
+	</div>
+      </div>
+  </div>
+</script>
+
+    <script type="unknown" id="job-v-template">
+  <div class="header">
+    <!--header-->
+    <div class="job-title showing-less"><h3 style="display:inline-block;">"{{name}}"</h3>
+    </div>
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#spacers-tab" data-toggle="tab">Spacers</a></li>
+      <!--
+      <li><a href="#downloads-tab" data-toggle="tab">Downloads</a></li>
+      <li><a href="#double-nickase-tab" data-toggle="tab">Double Nickase</a></li>
+      -->
+    </ul>
+    <div class="tab-content content-area">
+      <div id="spacers-tab" name="spacers" class="tab-pane active">
+	<!-- svg drawing area -->
+	<div class="header"><span class="section-name">Interactive results: </span><span class="annotation med-left-margin">mouse over a guide or explore below for details</div>
+	<div class="jobsvg-v-container">
+	</div>
+	<div class="col-tables-area">
+	  <div class="spacer-v-container"></div>
+	  <div class="col left">
+	    <div class="spacers-container"></div>
+	  </div><div class="col right spacer-h-v-container">
+	  </div>
+	</div>
+      </div>
+      <div id="downloads-tab" name="downloads" class="tab-pane"> 
+	<!-- files download area -->
+	<div id="downloadable" class="files-area"></div>
+      </div>
+      <div id="double-nickase-tab" name="double nickase" class="tab-pane">
+	<div class="nickase-v-container"></div>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script type="unknown" id="job-v-svg-container-template">
+</script>
+
+
+<!-- A view containing all spacers in the left column -->
+<script type="unknown" id="job-spacer-list-v-template">
+  <div class="header showing-less">
+    <div><h4>all guides</h4></div>
+    <div>scored by inverse likelihood of offtarget binding</div>
+    <span class="annotation">mouse over for details</span> 
+    <a class="med-left-margin less show-more annotation">... show legend</a>
+    <a class="med-left-margin more show-less annotation">... hide legend</a>
+
+    <div class="guide-quality more">
+      <div class="high-quality color-text"> high quality guide</div>
+      <div class="medium-quality color-text"> mid quality guide</div>
+      <div class="low-quality color-text"> low quality guide</div>
+    </div>
+  </div>
+  <table class="med-top-margin">
+    <thead>
+      <tr> 
+	<th></th>
+	<th class="center">score</th>
+	<th class="center">sequence</th>
+      </tr>
+    </thead>
+    <tbody class="views"></tbody>
+  </table>
+</script>
+
+    <script type="unknown" id="batch-v-template">
+  <h1 class="header">
+    {{original_filename}}
+  </h1>
+  <div>
+    <h3>Info</h3>
+    <div>{{jobs.length}} jobs querying the genome {{genome_name}}.</div>
+    <div>Submitted by {{email}} at {{submitted_ms}}, completed at 
+      <span class="completed_ms">{{completed_ms != null ? completed_ms : "(not yet completed)"}}
+      </span>
+    </div>
+  </div>
+  <h3 class="header">Jobs</h3>
+  <div class="job-links">
+  </div>
+</script>
+
+<script type="unknown" id="job-link-template">
+  <a href={{link}}>#<span class="id">{{id}}</span> <span class="name">{{name}}</span> (<span class="n_completed_spacers {{n_completed_spacers==0?'unstarted':'started'}}">{{n_completed_spacers}}</span>/<span class="n_spacers">{{n_spacers}}</span> spacers)</a>
+</script>
+
+    <script id="readout-section-template" type="unknown">
+  <div class="job-header-area"></div>
+</script>
+
+
+    <script type="unknown" id="downloads-v-template">
+  <div clas="content-area">
+    <h3> downloads for <a href="job_page_url">{{name}}</a></h3>
+    <br/><i>2014-01-11 This page is not yet complete, stay tuned!</i>
+    <br/><br/>
+    <dl>
+      <dt>Scored guides GENBANK file:</dt><dd><a target=_blank href={{export_gb_guides_url}}>all_guides.gb</a></dd>
+      <dt>All offtargets by guide, CSV:</dt><dd><a href={{export_all_csv_offtargets_url}}>all_offtargets.csv</a></dd><dd>(Guide IDs reference those from "all_guides" GENBANK file above)</dd> 
+      <dt>Nickase pair selection GENBANK file:</dt><dd> <a target=_blank href={{export_gb_nicks_url}}>all_nickases.gb</a></dd>
+  </div>
+</script>
+
+    <script id="submit-section-template" type="unknown">
+  <div class="header">
+    <h1 class="header-oneword">{{name}}</h1>
+  </div>
+  
+
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#submit-one" data-toggle="tab">Single Sequence</a></li>
+    <li ><a href="#submit-many" data-toggle="tab">Batch Mode</a></li>
+  </ul>
+  <div class="tab-content content-area">
+    <div id="submit-one" name="submit-sequence" class="tab-pane scrolly-content active">
+      <div class="header-description">{{description}}</div>
+      <form class="form-horizontal" >
+	<div class="control-group">
+	  <span class="control-label">search name *</span>
+	  <div class="controls">
+	    <input name="name" id="search-name" type="text" required="true" placeholder="name" value=>
+	  </div>
+	</div>
+	<div class="control-group">
+	  <span class="control-label">email address *</span>
+	  <div class="controls">
+	    <input name="email" id="email-address" type="email" required="true" placeholder="email" value=>
+	  </div>
+	</div>
+	<div class="control-group">
+	  <span class="control-label">sequence type</span>
+	  <div  class="controls">
+	    <label class="radio input-type-select">
+	      <input  type="radio" name="inputRadios" id="optionsRadios2" value="other_region" checked>
+	      other region (23-500 nt) <a class="annotation show-other-example">[..demo]</a>
+	    </label>
+	    <label  class="radio input-type-select">
+	      <input type="radio" name="inputRadios" id="optionsRadios1" value="unique_genomic" >
+	      unique genomic region (23-500 nt) <a class="annotation show-genome-example">[..demo]</a>
+	    </label>
+	  </div> 
+	</div>
+	<div class="control-group">
+	  <span class="control-label">target genome</span>
+	  <div  class="controls genome-controls">
+	  </div> 
+	</div>
+	<div class="control-group">
+	  <span class="control-label">sequence</span>
+	  <div class="controls">
+	    <textarea name="query" id="sequence_submission_area" required="true" placeholder="" pattern=".{23,}" rows=10></textarea>
+	  </div>
+	</div>
+	<div class="control-group submit-group">
+	  <span class="controls">By submitting your query, you agree that the results obtained</span>
+	  <span class="controls">from this web tool will only be used as a reference for</span>
+	  <span class="controls">non-clinical research purposes.</span>
+	  <div class="controls"><input type="submit" value="Agree and Submit"></input>
+	  </div>
+	</div>
+      </form>
+    </div>
+    <div id="submit-many" name="submit-fasta" class="tab-pane scrolly-content">
+      <div class="header-description">Submit multiple sequences in Fasta format for CRISPR design and analysis.</div>
+      <form class="form-horizontal" name="submit-fasta" >
+
+	<div class="control-group">
+	  <span class="control-label">FASTA file *</span>
+	  <div  class="controls">
+	    <label>
+	      <input type="file" name="fasta_file" id="file-input-2" required=true title="fasta file" value="choose a file"/>
+	    </label>
+	  </div> 
+	</div>
+	<div class="control-group">
+	  <span class="control-label">email address *</span>
+	  <div class="controls">
+	    <input name="email" id="email-address-2" type="email" required="true" placeholder="email" value=>
+	  </div>
+	</div>
+	<div class="control-group">
+	  <span class="control-label">target genome</span>
+
+	  <div  class="controls genome-controls">
+	    <!-- this is filled in the rendering script with genome-contro -->
+	  </div> 
+	</div>
+	<div class="control-group submit-group">
+	  <span class="controls">By submitting your query, you agree that the results obtained</span>
+	  <span class="controls">from this web tool will only be used as a reference for</span>
+	  <span class="controls">non-clinical research purposes.</span>
+	  <div class="controls"><input type="submit" value="Agree and Submit"></input>
+	  </div>
+	</div>
+      </form>
+    </div>
+  </div>
+</script>
+
+<script type="unknown" id="genome-control-template">
+    <input type="radio" name="genome" value="{{name}}" {{checked_string}}>{{descriptive_name}} ({{name}})
+</script>
+
+
+    <script id="file-list-v-template" type="unknown">
+  <span class="header">Downloadable results</span>:<span class="files"></span>
+  <div class="more annotation med-left-margin small-top-margin">WARNING: the current alpha version may fail to generate files for queries which do not map <i>uniquely</i> to the <i>human genome</i>. Please send us an <a href="mailto:crispr.scan@gmail.com">email</a> if you have any questions.
+</script>
+
+<script id="file-v-template" type="unknown">
+  <a href="{{url}}" download={{filename}}>{{name}}</a>
+</script>
+
+    <script type="unknown" id="about-section-template">
+  <div class="row med-margin-top">
+    <div id="purpose" class="span6 offset2">
+      <h1>About CRISPR Design</h1>
+      <h3>Purpose of the CRISPR Design Tool</h3>
+      <p>The CRISPR design tool is a web tool crafted to simplify the process of CRISPR guide selection in an input DNA sequence by (i) discovering possible offtargets genome-wide, (ii) highlighting guides with high target specificity, and (iii) flagging guides with numerous or genic offtargets in target genomes.</p>
+    </div>
+  </div>
+
+  <div class="row med-margin-top">
+    <div id="using" class="span6 offset2">
+      <h3>Using CRISPR Design</h3>
+      <p>To use the CRISPR design web tool, simply: <ol><li>head over to submission page at <a href="crispr.mit.edu">crispr.mit.edu</a> </li><li>enter in a DNA sequence</li><li>choose a target genome, </li></ol> and click submit. </p><p>The sequence will be scanned for possible CRISPR guides (20 nucleotides followed by a PAM sequence: NGG) and scanned for possible offtarget matches throughout the selected genome. Job output will be presented on the job output page with each guide linked to a list of offtargets and presented in the order of their score from zero to 100% roughly indicating the faithful on-target activity of each guide.</p>
+    </div>
+  </div>
+
+  <div class="row med-margin-top">
+    <div id="score" class="span6 offset2">
+      <h3>Interpreting Scores</h3>
+      <p>The CRISPR design tools output page:</p>
+      <img  style="margin:10px; max-width:auto;" src="/img/output_preview.gif"></img>
+      <p>presents a ranked list of all possible guides in the query sequence ordered by faithfullness of on-target activity computed as 100% minus a weighted sum of offtarget hit-scores in the target genome.</p>
+      <p>Offtarget hit scores are displayed for top matches of each guide and are computed by taking into account total number of mismatches, mismatch absolute position -- to accommodate for the relatively high disturbance of mismatches falling close to the PAM site, and mean pairwise distance between mismatches -- to account for the steric affect of closely neighboring mismatches in disrupting guide-DNA interaction.</p>
+    </div>
+  </div>
+  <div class="row med-margin-top">
+    <div id="single-hit" class="span6 offset2">
+      <h3>Scores of Single Hits</h3>  
+      <p>The actual algorithm used to score single offtargets is:</p>
+<img  style="margin:10px; max-width:auto;" src="http://latex.codecogs.com/gif.latex?\prod_{e\in{\mathcal{M}}}\left(1-&space;W[e]\right)\times\frac{1}{\left(\frac{(19&space;-&space;\bar{d})}{19}\times4&space;&plus;&space;1\right)}\times\frac{1}{n^2_{mm}}" title="\prod_{e\in{\mathcal{M}}}\left(1- W[e]\right)\times\frac{1}{\left(\frac{(19 - \bar{d})}{19}\times4 + 1\right)}\times\frac{1}{n^2_{mm}}" />
+      <p>Within the first term, <i>e</i> runs over the mismatch positions between guide and offtarget, with M:</p>
+      <img style="margin:10px; max-width:auto;" src="http://latex.codecogs.com/gif.latex?M&space;=&space;[0,0,0.014,0,0,0.395,0.317,0,0.389,0.079,0.445,\\&space;0.508,0.613,0.851,0.732,0.828,0.615,0.804,0.685,0.583]" title="M = [0,0,0.014,0,0,0.395,0.317,0,0.389,0.079,0.445,\\ 0.508,0.613,0.851,0.732,0.828,0.615,0.804,0.685,0.583]" />
+      <p>representing the experimentally-determined effect of mismatch position on targeting. (<a href="http://www.nature.com/nbt/journal/v31/n9/full/nbt.2647.html">Hsu et al, Nature Biotechnology 2013</a>)</p>
+      <p>And terms two and three factoring in the effect of mean pairwise distance between mismatches (<i>d</i>) and a dampening penalty for highly mismatched targets. </p>
+    </div>
+  </div>
+
+  <div class="row med-margin-top">
+    <div id="aggregate-score" class="span6 offset2">
+      <h3>Aggregate Scores by Guide</h3>  
+      <p>Once individual hits have been scored, each guide is assigned a score:</p>
+      <img  style="margin:10px; max-width:auto;"  src="http://latex.codecogs.com/gif.latex?S_{guide}&space;=&space;\frac{100}{100&space;&plus;&space;\sum_{i=1}^{n_{mm}}S_{hit}(h_i)}" title="S_{guide} = \frac{100}{100 + \sum_{i=1}^{n_{mm}}S_{hit}(h_i)}"/>
+      <p>and colored according to a broad categorization of guide quality which, taken into account with the presence or absence of marked genes in high-scoring offtargets indicate the relative (un)favorability of using a particular guide for specific targeting in the query region.</p>
+    </div>
+  </div>
+  <div class="row med-margin-top">
+    <div id="selection" class="span6 offset2">
+      <h3>Guide Selection</h3>  
+      <p> Guides having an aggregate score of greater than 50% are colored green and should be considered candidate targeting sequences if no high-scoring offtargets fall in marked gene regions (indicated in the table to the right). Guides colored yellow should be considered backups for specific targeting in the case where no suitable green guides are clear of high-scoring, genic offtargets. Red guides have many likely offtarget interactions in the target genome and should be avoided.
+    </div>
+  </div>
+</script>
+
+    <script type="unknown" id="nickase-v-template">
+  <div class="content-area">
+
+    <div class="">
+      <h3>Double Nickase Design</h3>
+    </div>
+    <div class="top panes">
+      <div class="click-grabber"></div>				
+      <div class="pane left pane2 nick-list-container">
+	<div class="">
+	  <h4>All Pairs</h4>
+	  <div>Sorted by score.</div>
+	  <div><a class="export export-all-pairs" target="_blank" href="{{export_gb_nicks_url}}">Export all pairs to GENBANK</a></div>
+	  
+	  <div style="display:none;" class="scores-explanation">"explanation temporarily removed"</div>
+
+	</div>
+	<div class="nicks-list">
+	</div>
+      </div>
+      <div class="pane1 right pane">
+	<div class=" nickase-tl-header">
+	  <h4>Top Pairs</h4>
+	  <div>View top pairs by overhang subregion.</div>
+	  <div class="nickase-tl-options-container">
+	  </div>
+	  <div class="full-width"><span class="right" style="float:right;"><a class="explain-this-view">Explain this View</a></span></div>
+	</div>
+	<div class="main graphics">
+	</div>
+      </div>
+    </div><!-- top panes end -->
+    <div class="bottom panes">
+      <div class="main details details pane pane3">
+      </div>
+    </div>
+    </div>
+  </div>
+</script>
+
+<!-- A view for a single spacer selement in Left Column-list view -->
+<script type="unknown" id="nickase-list-v-template">
+  <td>{{"#<span class=rank>"+rank+"</span>"}}</td>
+  <td>{{start}} .. {{end}}</td>
+  <td class="center"><span class="">{{sprintf("%d",score)}}</span></td>
+</script>
+
+<script type="unknown" id="job-svg-view-template">
+  <div class="main-svg-canvas"></div>
+</script>
+
+<script type="unknown" id="nickase-svg-view-template">
+  <div class="main-svg-canvas"></div>
+  <div class=""> </div>
+</script>
+
+
+<script type="unknown" id="nickase-tl-options-template">
+  <form class="form-horizontal">
+    <div class="control-group">
+      <div class="controls">
+	<label class="radio input-type-select">
+	  <input checked=true class="entire-region" type="radio" name="group1">No filter <span class='med-margin-left annotation'>(finds all guide pairs in the query sequence).</span></input>
+	</label>
+	<label class="radio input-type-select">
+	  <input type="radio" class="spanning-region" name="group1"></input>Guide pairs overlapping a subregion from base(s) <span class="active-region-start-display">??</span> to <span class="active-region-end-display">??</span>  <span class='med-margin-left annotation'>(drag below specify a region)</span>
+	</label>
+	
+      </div>
+    </div> 
+  </form>
+  <span style="display:none;" class="explanation">
+    Horizontal bars indicate possible guide pairs for CAS-9 double nickase over the input query. <span style="color:green;">Green</span> pairs are recommended.<br/>Arrows indicate cut sites of guides on each strand. <span style="color:green;">Green</span> arrows correspond to guides having low offtarget activity.<br/>Please select from all recommended guide pairs or drag a selection below to indicate that guides pairs should span a query subregion.
+  </span>
+
+</script>
+
+
+<script type="unknown" id="nickase-detail-v-template">
+
+  <div class="full-width header page-header">
+    <h4 class="nickase-detail-title">{{start}} .. {{end}}</h4>
+    <span class="hover-helper"></span>
+    <span class="right" style="float:right;"><a class="export export-active-nick" href="{{export_gb_url}}" target="_blank">Export to GENBANK</a></span>
+  </div>
+
+
+  <div class="details-svg-container">
+  </div>
+
+  <div class="cards">
+    <div class="sequence-section card">
+      <h5 class="header">Overhang region</h5>
+      <div class="sequence-details-container">
+      </div>
+    </div>
+    
+
+    <div class="spacer reverse card {{reverse_guide.quality}}">
+      <h5 class="header">Guide A</h5>
+      <div class='qbox'><span>{{Math.round(reverse_guide.score*100)}}</span></div>
+
+	<dl>
+	  <dt>quality</dt><dd>{{reverse_guide.quality}}</dd>
+	  <dt>cuts after position</dt><dd>{{reverse_guide.cut_site}} in query</dd>
+	  <dt>sequence</dt><dd class="sequence">{{reverse_guide.sequence}}</dd>
+	  <dt># offtargets</dt><dd>{{reverse_guide.n_offtargets}}</dd>
+	  <dt># genic offtargets</dt><dd>{{reverse_guide.n_genic_offtargets}}</dd>
+	  <div><a class="export export-one-guide" target="_blank" href="{{export_csv_reverse_guide_url}}">Export off-targets to .csv</a></div>
+
+	</dl>
+    </div>
+    <div class="spacer forward card {{forward_guide.quality}}">
+      <div class='qbox'><span>{{Math.round(forward_guide.score*100)}}</span></div>
+
+      <h5 class="header">Guide B</h5>
+	<dl>
+	  <dt>quality</dt><dd>{{forward_guide.quality}}</dd>
+	  <dt>cuts after position</dt><dd>{{forward_guide.cut_site}} in query</dd>
+	  <dt>sequence</dt><dd class="sequence">{{forward_guide.sequence}}</dd>
+	  <dt># offtargets</dt><dd>{{forward_guide.n_offtargets}}</dd>
+	  <dt># genic offtargets</dt><dd>{{forward_guide.n_genic_offtargets}}</dd>
+	  <div><a class="export export-one-guide" target="_blank" href="{{export_csv_forward_guide_url}}">Export off-targets to .csv</a></div>
+	</dl>
+    </div>
+    <div class="score card {{quality}}">
+      <h5 class="header">Pair score, A & B</h5>
+      <div class='qbox'><span>{{Math.round(score)}}</span></div>
+	<dl>
+	  <dt>quality</dt><dd>{{quality}}</dd>
+	  <dt># offtarget pairs of A & B</dt><dd class="sequence">{{n_offtargets}}</dd>
+	  <dt># genic OT pairs of A & B</dt><dd class="sequence">{{n_genic_offtargets}}</dd>
+	</dl>
+    </div>
+
+  </div>
+</script>
+
+ <!-- variables to trigger interface updates 
+included-nicks-count-display
+active-region-width-display
+active-region-end-display
+active-region-start-display
+
+-->
+
+
+
+<!-- A view containing all spacers in the left column -->
+<script type="unknown" id="job-nicks-list-v-template">
+  <table>
+    <thead>
+      <tr> 
+	<th class="center"></th>
+	<th class="center">range</th>
+	<th class="center">score</th>
+      </tr>
+    </thead>
+    <tbody class="views"></tbody>
+  </table>
+</script>
+
+
+
+
+<svg style="display:none;" version="1.1" id="pacman-inline" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="612px" height="792px" viewBox="0 0 612 792" enable-background="new 0 0 612 792" xml:space="preserve">
+<path fill="#FAF7BF" opacity=".25" d="M22.41-13.932h-0.023c-5.496,0-11.557,1.644-15.438,3.144C-0.108-8.072-7.146-3.576-12.402,1.985
+	c-5.259,5.562-8.723,12.176-8.722,19.139c0.001,4.149,1.225,8.438,4.059,12.746c1.95,2.965,5.664,5.891,10.138,8.049
+	c4.471,2.162,9.699,3.566,14.669,3.566h0.006c0.277,0,0.555-0.004,0.83-0.014l0.014,0.396l0.017-0.396
+	c0.976,0.045,2.036,0.072,3.152,0.072h0.021c3.874,0,8.428-0.332,12.475-1.449c4.058-1.115,7.58-3.016,9.469-6.094
+	c0.932-1.517,1.301-2.898,1.303-4.211c0.004-2.543-1.422-4.904-3.145-7.291c-1.715-2.39-3.703-4.783-4.684-7.47
+	c-0.49-1.349-0.705-2.61-0.705-3.796c0-1.924,0.566-3.643,1.398-5.232c1.249-2.386,3.087-4.506,4.591-6.709
+	c1.507-2.205,2.671-4.465,2.671-7.131c0-0.498-0.041-1.014-0.128-1.548c-0.547-3.286-2.144-5.378-4.382-6.702
+	C28.408-13.408,25.501-13.932,22.41-13.932"/>
+<path fill="#E1B8A0" d="M22.398-13.932h0.012c3.092,0,5.998,0.524,8.234,1.843c2.238,1.325,3.836,3.416,4.381,6.702
+	c0.088,0.534,0.129,1.05,0.129,1.548c0,2.666-1.164,4.926-2.671,7.131C30.979,5.495,29.141,7.615,27.892,10
+	c-0.831,1.59-1.398,3.309-1.398,5.232c0,1.186,0.215,2.447,0.705,3.796c0.98,2.687,2.969,5.08,4.684,7.47
+	c1.722,2.387,3.15,4.748,3.144,7.289c-0.001,1.314-0.37,2.696-1.301,4.213c-1.89,3.078-5.412,4.979-9.47,6.094
+	c-4.047,1.117-8.601,1.449-12.476,1.449h-0.02c-1.117,0-2.177-0.027-3.151-0.072l-0.018,0.396l-0.014-0.396
+	c-0.275,0.01-0.553,0.014-0.83,0.014H7.742c-4.969,0-10.197-1.404-14.669-3.566c-4.474-2.158-8.188-5.082-10.137-8.049
+	c-2.836-4.309-4.059-8.597-4.06-12.746c-0.001-6.963,3.463-13.576,8.722-19.139C-7.146-3.576-0.108-8.072,6.948-10.791
+	c3.882-1.498,9.943-3.142,15.438-3.142H22.398 M22.482-14.723h-0.168c-5.629,0.019-11.71,1.677-15.65,3.194
+	C-0.5-8.767-7.624-4.219-12.977,1.442c-5.35,5.658-8.937,12.447-8.938,19.682c-0.001,4.308,1.278,8.76,4.189,13.18
+	c2.074,3.146,5.886,6.117,10.454,8.328c4.57,2.207,9.9,3.645,15.02,3.645c0.278,0,0.56-0.004,0.84-0.014
+	c0.983,0.045,2.055,0.072,3.183,0.072c3.921,0,8.537-0.33,12.694-1.476c4.154-1.146,7.88-3.11,9.934-6.444
+	c0.998-1.617,1.421-3.158,1.419-4.627c-0.004-2.849-1.56-5.34-3.293-7.752c-1.739-2.414-3.675-4.773-4.581-7.277
+	c-0.461-1.271-0.656-2.434-0.656-3.525c-0.002-2.646,1.162-4.895,2.67-7.096c1.504-2.197,3.342-4.322,4.59-6.717
+	c0.832-1.596,1.399-3.324,1.399-5.26c0-0.543-0.045-1.101-0.139-1.676c-0.567-3.486-2.338-5.836-4.761-7.255
+	C28.646-14.182,25.635-14.712,22.482-14.723"/>
+<path fill="none" stroke="#AE1F24" stroke-width="0.791" d="M-0.078,0c-10.695,3.765-22.897-5.539-33.827-5.107"/>
+<path fill="none" stroke="#B53033" stroke-width="0.791" d="M5.233-10.08c-2.551-0.75-1.752-3.688-1.64-5.998
+	c0.044-0.975,0.865-2.676,0.949-3.635c0.156-1.85-3.4-1.9-4.176-0.377c-0.591,1.157,0.066,3.078,0.32,4.256
+	c0.57,2.653,0.204,5.793-0.757,8.381c-0.273,0.721-1.554,2.014-1.471,2.004C-2.727-4.96-3.388-4.805-4.634-4.644
+	c-1.24,0.16-2.493,0.162-3.734,0.037c-2.53-0.254-5.05-0.902-7.504-1.621c-2.528-0.736-5.002-1.67-7.52-2.436
+	c-2.441-0.738-4.94-1.371-7.464-1.676c-1.15-0.139-2.277-0.152-3.392-0.055"/>
+<path fill="none" stroke="#AE1F24" stroke-width="0.791" d="M-33.745-5.123c-1.207,0-2.591-0.562-3.116-1.705
+	c-0.812-1.752,0.936-3.629,2.684-3.576"/>
+</svg>
+
+
+    <script type="text/javascript" src="/js/pages/base.js"></script>
+    <script type="text/javascript" src="/js/pages/readout.js"></script>
+    <script type="text/javascript" src="/js/app/constants.js"></script>
+    <script type="text/javascript" src="/js/app/delegates.js"></script>
+    <script type="text/javascript" src="/js/app/url.js"></script>
+    <script type="text/javascript" src="/js/app/init.js"></script>
+    <script type="text/javascript" src="/js/models/job_m.js"></script>
+    <script type="text/javascript" src="/js/models/spacer_m.js"></script>
+    <script type="text/javascript" src="/js/models/nickase_m.js"></script>
+    <script type="text/javascript" src="/js/models/hit_m.js"></script>
+    <script type="text/javascript" src="/js/models/file_m.js"></script>
+    <script type="text/javascript" src="/js/views/job_v.js"></script>
+    <script type="text/javascript" src="/js/views/svg_v.js"></script>
+    <script type="text/javascript" src="/js/views/nickase_v.js"></script>
+    <script type="text/javascript" src="/js/views/nickase_svg_v.js"></script>
+    <script type="text/javascript" src="/js/views/n_details_view.js"></script>
+    <script type="text/javascript" src="/js/views/readout_v.js"></script>
+    <script type="text/javascript" src="/js/views/spacer_v.js"></script>
+    <script type="text/javascript" src="/js/views/hit_v.js"></script>
+    <script type="text/javascript" src="/js/views/file_v.js"></script>
+    
+  </head>
+  <body class="readout" data-target="#navparent" data-spy="scroll" >
+    <div class="header">
+      <div class="navbar unselectable">
+  <div class=""><!--removed navbar inner styling -->
+    <div class="container"> 
+      <ol class="breadcrumb brand">
+	<li><a href="/">CRISPR Design</a><span class="divider">/</span></li>
+      </ol>
+
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <ul class="nav pull-right">
+        <li><a href="/about">Help</a></li>        
+        <li><a href="https://groups.google.com/forum/#!forum/crispr">Forum</a></li>        
+      </ul>
+    </div>
+  </div>
+</div>
+<!--
+
+
+-->
+
+
+
+<!--
+
+<div class="alert alert-warning alpha-warning header">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <div class="content showing-less">
+    <span class="text-fixed-width-content">Heads up -- the CRISPR server is currently under heavy load as we churn through jobs which were submitted before system upgrades taking place over the past week. Single jobs may at the moment take an hour or more to complete, batch jobs are are at the back of the queue and could take longer. If any fail to finish by 9/11/2013, please let us know!</span>
+    <a class=" less show-more">show more</a>
+    <span class="more"> </span>
+    <a class="med-left-margin more show-less">... show less</a> 
+  </div>
+</div>
+-->
+
+    </div>
+    
+    <div id=readout-container>
+    </div>
+
+    <div class="footer">Zhang Lab, MIT 2015</div> 
+  </body> 
+</html>
