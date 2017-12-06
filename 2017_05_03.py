@@ -34,8 +34,8 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
 
-#circle=Circle((horizC,lclMean),0.05,color='k')
-#patches.append(circle)
+circle=Circle((horizC,lclMean),0.05,color='k')
+patches.append(circle)
 
 via=open('viabilityReport.csv','r').readlines()
 via.pop(0)
