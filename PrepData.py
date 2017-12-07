@@ -79,9 +79,7 @@ def compressString(string):
 	return clen
 
 
-
-cnx=mdb.connect('cmmrdbdev.research.sickkids.ca','greg','t43tt43t','gRNA_table')
-cur=cnx.cursor()
+cnx,cur=dbins.connect(db_env='DEV',local_db='gRNA_table')
 
 def Gidfind(Gid):
 	try:
